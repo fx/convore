@@ -15,6 +15,10 @@ module Convore
 			end
 			raise NoMethodError.new("no such method: #{method}")
 		end
+		
+		def return_string
+			'waffles'
+		end
 
 		class << self
 

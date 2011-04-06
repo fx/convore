@@ -4,14 +4,14 @@ require 'json'
 module Convore
 end
 
-require 'convore/version'
+#require_relative 'convore/version'
 
-require 'convore/api'
-require 'convore/base'
-require 'convore/user'
-require 'convore/group'
-require 'convore/topic'
-require 'convore/message'
-require 'convore/star'
-require 'convore/client'
-
+#require_relative 'convore/api'
+#require_relative 'convore/base'
+#require_relative 'convore/user'
+#require_relative 'convore/group'
+#require_relative 'convore/topic'
+#require_relative 'convore/message'
+#require_relative 'convore/star'
+#require_relative 'convore/client'
+require_relative 'convore/user_context'
