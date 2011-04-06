@@ -1,3 +1,8 @@
+#TODO Tests (and how to feed parms into the test for testing)
+# testing -> create group, then topic, message, etc.
+
+# accept jsonup in rest client
+
 require 'rest-client'
 
 module Convore
@@ -25,80 +30,72 @@ module Convore
 		end
 		
 		#Get detailed information about the group
-		def get_group_info(id)
-			if id.integer?
-				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{id}.json"
+		def get_group_info(group_id)
+			if group_id.integer?
+				RestClient.post "https://#{@username}:#{@password}@convore.com/api/groups/#{group_id}.json", {:accept => :json}
 			end
 		end
 		
 		#Get the group members
-		def get_group_info(id)
-			if id.integer?
-				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{id}/members.json"
+		def get_group_members(group_id, *hash)
+			if group_id.integer?
+				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/members.json", {:accept => :json},
+				#from here down optional
+				{:filter => hash[:admin]}
 			end
 		end
 		
+		#Join a public group
+		def join_public_group(group_id)
+			if group_id.integer?
+				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/join.json"
+			end
+		end
 		
+		#Requests to join a private group
+		def join_private_group(group_id)
+			if group_id.integer?
+				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/request.json"
+			end
+		end
 		
-	
-#
-
-#Note: Specify admin for the optional filter parameter to get only group admins.
-#https://convore.com/api/groups/:group_id/members.json
-#Request method: GET
-#Required parameters: group_id
-#Optional parameters: filter
-#groups/:group_id/join.json
-#
-#Joins a public group.
-#https://convore.com/api/groups/:group_id/join.json
-#Request method: POST
-#Auth: HTTP basic authentication
-#Required parameters: group_id
-#groups/:group_id/request.json
-#
-#Requests to join a private group.
-#https://convore.com/api/groups/:group_id/request.json
-#Request method: POST
-#Auth: HTTP basic authentication
-#Required parameters: group_id
-#groups/:group_id/leave.json
-#
-#Leave a group.
-#https://convore.com/api/groups/:group_id/leave.json
-#Request method: POST
-#Auth: HTTP basic authentication
-#Required parameters: group_id
-#groups/:group_id/online.json
-#
-#Get group members online now.
-#https://convore.com/api/groups/:group_id/online.json
-#Request method: GET
-#Auth: HTTP basic authentication
-#Required parameters: group_id
-#groups/:group_id/topics.json
-#
-#Get the latest topics in a group. Use the optional until_id parameter to paginate and get prior topics.
-#https://convore.com/api/groups/:group_id/topics.json
-#Request method: GET
-#Auth: HTTP basic authentication
-#Required parameters: group_id
-#Optional parameters: until_id
-#groups/:group_id/topics/create.json
-#
-#Create a new topic.
-#https://convore.com/api/groups/:group_id/topics/create.json
-#Request method: POST
-#Auth: HTTP basic authentication
-#Required parameters: group_id, name
-#groups/:group_id/mark_read.json
-#
-#Mark all messages in the group as read.
-#https://convore.com/api/groups/:group_id/mark_read.json
-#Request method: POST
-#Auth: HTTP basic authentication
-#Required parameters: group_id
-#		
+		#Leave a group
+		def leave_group(group_id)
+			if group_id.integer?
+				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/leave.json"
+			end
+		end
+		
+		#Get group members online now
+		def get_online_members(group_id)
+			if group_id.integer?
+				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/online.json"
+			end
+		end
+		
+		#Get the latest topics in a group
+		def get_latest_topics(group_id, *hash)
+			if group_id.integer?
+				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/topics.json",
+				#from here down optional (pagination)
+				{:until_id => hash[:until_id]}
+			end
+		end
+		
+		#Create a new topic
+		def create_topic(group_id, name)
+			if group_id.integer?
+				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/topics/create.json",
+				{:name => hash[:name]}
+			end
+		end
+		
+		#Mark all messages in the group as read
+		def get_online_members(group_id, name)
+			if group_id.integer?
+				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/mark_read.json"
+			end
+		end	
 		
 		
 		def self.api
