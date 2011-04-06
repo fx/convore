@@ -1,11 +1,12 @@
 module Convore
 	class Base
-		attr_accessor :attributes
+		attr_accessor :attributes, :username, :password
 
 		def initialize
 			@attributes ||= {}
 		end
 
+		
 		def method_missing(method, *args)
 			if method.match(/\=/)
 				@attributes[method.to_s.gsub(/\=$/, '').to_sym] = args.first
@@ -16,9 +17,6 @@ module Convore
 			raise NoMethodError.new("no such method: #{method}")
 		end
 		
-		def return_string
-			'waffles'
-		end
 
 		class << self
 
