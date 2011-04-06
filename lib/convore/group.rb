@@ -11,7 +11,7 @@ module Convore
 		
 		#get all of the groups that the user belongs to
 		def get_auth_groups
-			RestClient.get "https://#{username}:#{password}@convore.com/api/groups.json", {:accept => :json}
+			RestClient.get "https://#{Convore::UserContext.username}:#{password}@convore.com/api/groups.json", {:accept => :json}
 		end
 		
 		def waffles
