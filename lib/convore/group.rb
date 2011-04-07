@@ -1,7 +1,4 @@
-#TODO Tests (and how to feed parms into the test for testing)
-# testing -> create group, then topic, message, etc.
-
-# accept jsonup in rest client
+#TODO  accept jsonup in rest client
 
 require 'rest-client'
 
