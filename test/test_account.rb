@@ -3,6 +3,8 @@ require '../lib/convore'
 
 class Test_Account < Test::Unit::TestCase
   
+#TODO: More robust checkingthen 200, works for now though
+  
   def setup
     @username = 'Botticus'
     @password = 'bot123'
