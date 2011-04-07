@@ -8,14 +8,14 @@ class Test_Account < Test::Unit::TestCase
     @password = 'bot123'
   end
   
-  #check if you can login
+  #Check if the user is properly logged in
   def test_verified?
     account = Convore::Account.new(@username, @password)
     response = account.verified?
     assert_equal(response.code, 200)
   end
   
-  #mark all of the outstanding messages as read
+  #Mark all messages as read
   #error code 405?
   #def test_mark_all_read
   #  account = Convore::Account.new(@username, @password)
@@ -23,10 +23,17 @@ class Test_Account < Test::Unit::TestCase
   #  assert_equal(response.code, 200)
   #end
   
-  #get all members
+  #Get members online now
   def test_get_members_online
     account = Convore::Account.new(@username, @password)
     response = account.get_members_online
+    assert_equal(response.code, 200)
+  end
+  
+  #Get the users mentions
+  def test_get_mentions
+    account = Convore::Account.new(@username, @password)
+    response = account.get_mentions
     assert_equal(response.code, 200)
   end
   
