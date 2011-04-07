@@ -1,10 +1,21 @@
 Convore API
 ===========
 
-Quick implementation of the Convore.com API in ruby.
+Status of Completion
+-----
+Account: 80%
+Groups: 50%
+Topics: 0%
+Messages: 0%
+Users: 0%
+
+Group Discovery 0%
+
 
 Usage
 -----
+
+Client:
 
 	require 'convore'
 
