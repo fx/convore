@@ -13,7 +13,7 @@ module Convore
 		
 		#Get a list of the current user's groups
 		def get_groups
-			RestClient.get "https://#{username}:#{password}@convore.com/api/groups.json", {:accept => :json}
+			RestClient.get "https://#{username}:#{password}@convore.com/api/groups.json"
 		end
 		
 		#Create a new group.
@@ -29,30 +29,30 @@ module Convore
 		#Get detailed information about the group
 		def get_group_info(group_id)
 			if group_id.integer?
-				RestClient.post "https://#{@username}:#{@password}@convore.com/api/groups/#{group_id}.json", {:accept => :json}
+				RestClient.get "https://#{@username}:#{@password}@convore.com/api/groups/#{group_id}.json"
 			end
 		end
 		
 		#Get the group members
 		def get_group_members(group_id, *hash)
 			if group_id.integer?
-				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/members.json", {:accept => :json},
+				RestClient.get "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/members.json",
 				#from here down optional
-				{:filter => hash[:admin]}
+				hash[0]
 			end
 		end
 		
-		#Join a public group
+		#Join a public group - Mandatory payload (via rest-client)
 		def join_public_group(group_id)
 			if group_id.integer?
-				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/join.json"
+				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/join.json", {}
 			end
 		end
 		
 		#Requests to join a private group
 		def join_private_group(group_id)
 			if group_id.integer?
-				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/request.json"
+				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/request.json",
 			end
 		end
 		
