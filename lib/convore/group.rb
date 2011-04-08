@@ -1,5 +1,5 @@
 #TODO  accept jsonup in rest client
-#If posts don't have a payload they need to be fed a hash {}
+#If posts don't have a mandatory payload they need to be fed a hash {}
 require 'rest-client'
 
 module Convore
@@ -82,7 +82,7 @@ module Convore
 		end
 		
 		#Create a new topic
-		def create_topic(group_id, name)
+		def create_topic(group_id, hash)
 			if group_id.integer?
 				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/topics/create.json",
 				{:name => hash[:name]}
@@ -90,12 +90,11 @@ module Convore
 		end
 		
 		#Mark all messages in the group as read
-		def get_online_members(group_id, name)
+		def mark_all_read(group_id)
 			if group_id.integer?
-				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/mark_read.json"
+				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/mark_read.json", {}
 			end
 		end	
-		
 		
 		def self.api
 			'group'
