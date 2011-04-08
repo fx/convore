@@ -22,36 +22,67 @@ class Test_Group < Test::Unit::TestCase
   #  response = group.create_group(hash)    
   #  assert_equal(response.code, 200)
   #end
-  #
-  ##1 parm
+  
   #def test_get_group_info
   #  group = Convore::Group.new(@username, @password)
   #  response = group.get_group_info(7939)    
   #  assert_equal(response.code, 200)
   #end
+  
+  ##1 parms
+  #def test_get_group_members_1
+  #  group = Convore::Group.new(@username, @password)
+  #  response = group.get_group_members(7939)    
+  #  assert_equal(response.code, 200)
+  #end
   #
   ##2 parms
-  #def test_get_group_members
+  #def test_get_group_members_2
   #  group = Convore::Group.new(@username, @password)
   #  response = group.get_group_members(7939, {:filter => 'admin'})    
   #  assert_equal(response.code, 200)
   #end
   
-  def test_join_public_group
+  #def test_join_public_group
+  #  group = Convore::Group.new(@username, @password)
+  #  response = group.join_public_group(7939)    
+  #  assert_equal(response.code, 200)
+  #end
+  #
+  #def test_join_private_group
+  #  group = Convore::Group.new(@username, @password)
+  #  response = group.join_public_group(8595)    
+  #  assert_equal(response.code, 200)
+  #end
+  
+  #def test_leave_group
+  #  group = Convore::Group.new(@username, @password)
+  #  response = group.leave_group(7939)    
+  #  assert_equal(response.code, 200)
+  #end
+
+  #def test_get_online_members
+  #  group = Convore::Group.new(@username, @password)
+  #  response = group.leave_group(7939)    
+  #  assert_equal(response.code, 200)
+  #end
+  
+  #1 parm
+  def test_get_latest_topics_1
     group = Convore::Group.new(@username, @password)
-    response = group.join_public_group(7939)    
+    response = group.get_latest_topics(7939)    
     assert_equal(response.code, 200)
   end
   
-  def test_join_private_group
+  #2 parm
+  def test_get_latest_topics_2
     group = Convore::Group.new(@username, @password)
-    response = group.join_public_group(8595)    
+    response = group.get_latest_topics(7939, {:until_id => 1})    
     assert_equal(response.code, 200)
   end
   
-
-
-
+  
+  
 
   
 end

@@ -1,5 +1,5 @@
 #TODO  accept jsonup in rest client
-
+#If posts don't have a payload they need to be fed a hash {}
 require 'rest-client'
 
 module Convore
@@ -38,11 +38,12 @@ module Convore
 			if group_id.integer?
 				RestClient.get "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/members.json",
 				#from here down optional
+				#{:filter => hash[:admin]}
 				hash[0]
 			end
 		end
 		
-		#Join a public group - Mandatory payload (via rest-client)
+		#Join a public group
 		def join_public_group(group_id)
 			if group_id.integer?
 				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/join.json", {}
@@ -59,23 +60,24 @@ module Convore
 		#Leave a group
 		def leave_group(group_id)
 			if group_id.integer?
-				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/leave.json"
+				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/leave.json", {}
 			end
 		end
 		
 		#Get group members online now
 		def get_online_members(group_id)
 			if group_id.integer?
-				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/online.json"
+				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/online.json", {}
 			end
 		end
 		
 		#Get the latest topics in a group
 		def get_latest_topics(group_id, *hash)
 			if group_id.integer?
-				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/topics.json",
+				RestClient.get "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/topics.json",
 				#from here down optional (pagination)
-				{:until_id => hash[:until_id]}
+				#{:until_id => hash[:until_id]}
+				hash[0]
 			end
 		end
 		
