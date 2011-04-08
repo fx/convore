@@ -18,12 +18,11 @@ class Test_Account < Test::Unit::TestCase
   end
   
   #Mark all messages as read
-  #error code 405?
-  #def test_mark_all_read
-  #  account = Convore::Account.new(@username, @password)
-  #  response = account.mark_all_read
-  #  assert_equal(response.code, 200)
-  #end
+  def test_mark_all_read
+    account = Convore::Account.new(@username, @password)
+    response = account.mark_all_read
+    assert_equal(response.code, 200)
+  end
   
   #Get members online now
   def test_get_members_online

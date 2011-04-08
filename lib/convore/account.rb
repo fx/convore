@@ -9,8 +9,7 @@ module Convore
 			@password = password
 		end
 		
-		#Use this method to check if the user is properly logged in
-		#Check to see if you can even log in..
+		#Use this method to check if the user is properly logged in (also get user id)
 		def verified?
 			RestClient.get "https://#{username}:#{password}@convore.com/api/account/verify.json", {:accept => :json}
 		end
@@ -18,7 +17,7 @@ module Convore
 		#Mark all messages as read
 		#getting back a 405, does this even work?
 		def mark_all_read
-			RestClient.get "https://#{username}:#{password}@convore.com/api/account/mark_read.json", {:accept => :json}
+			RestClient.post "https://#{username}:#{password}@convore.com/api/account/mark_read.json", {:accept => :json}
 		end
 		
 		#Get members online now
