@@ -52,7 +52,7 @@ module Convore
 		#Requests to join a private group
 		def join_private_group(group_id)
 			if group_id.integer?
-				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/request.json",
+				RestClient.post "https://#{username}:#{password}@convore.com/api/groups/#{group_id}/request.json", ()
 			end
 		end
 		

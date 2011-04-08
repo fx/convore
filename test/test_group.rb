@@ -43,6 +43,12 @@ class Test_Group < Test::Unit::TestCase
     assert_equal(response.code, 200)
   end
   
+  def test_join_private_group
+    group = Convore::Group.new(@username, @password)
+    response = group.join_public_group(8595)    
+    assert_equal(response.code, 200)
+  end
+  
 
 
 
