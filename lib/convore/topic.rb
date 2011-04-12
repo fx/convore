@@ -35,13 +35,13 @@ module Convore
 		end
 		
 		#Delete a topic. You must be the creator of the topic or a
-		## group admin in order to delete the topic.
-		#def delete_topic(topic_id)
-		#	if topic_id.integer?
-		#		RestClient.get "https://#{username}:#{password}@convore.com/api/topics/#{topic_id}/delete.json"
-		#	end
-		#end
-		#
+		# group admin in order to delete the topic.
+		def delete_topic(topic_id)
+			if topic_id.integer?
+				RestClient.get "https://#{username}:#{password}@convore.com/api/topics/#{topic_id}/delete.json"
+			end
+		end
+		
 		##Edit a topic. You must be the creator of the topic or a group admin in order to edit the topic.
 		#def edit_topic(topic_id, name)
 		#	if topic_id.integer?
