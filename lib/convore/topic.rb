@@ -57,13 +57,6 @@ module Convore
 			end
 		end
 		
-		
-		
-		
-		
-		
-		
-		
 		def self.api
 			'topic'
 		end
