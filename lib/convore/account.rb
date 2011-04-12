@@ -15,7 +15,6 @@ module Convore
 		end
 		
 		#Mark all messages as read
-		#getting back a 405, does this even work?
 		def mark_all_read
 			RestClient.post "https://#{username}:#{password}@convore.com/api/account/mark_read.json"
 		end
