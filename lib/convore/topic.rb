@@ -9,7 +9,7 @@ module Convore
 		#Get detailed information about the topic
 		def get_topic(topic_id)
 			if topic_id.integer?
-				RestClient.get "https://#{username}:#{password}@convore.com/api/topics/#{topic_id}.json"
+				RestClient.get "https://#{@username}:#{@password}@convore.com/api/topics/#{topic_id}.json"
 			end
 		end
 		
@@ -18,7 +18,7 @@ module Convore
 		#to false to leave the messages as unread
 		def get_topic_messages(topic_id, *hash)
 			if topic_id.integer?
-				RestClient.get "https://#{username}:#{password}@convore.com/api/topics/#{topic_id}/messages.json",
+				RestClient.get "https://#{@username}:#{@password}@convore.com/api/topics/#{topic_id}/messages.json",
 				#Optional Parms
 				#until_id
 				#mark_read
@@ -29,7 +29,7 @@ module Convore
 		#Post a new message
 		def create_message(topic_id, hash)
 			if topic_id.integer?
-				RestClient.post "https://#{username}:#{password}@convore.com/api/topics/#{topic_id}/messages/create.json",
+				RestClient.post "https://#{@username}:#{@password}@convore.com/api/topics/#{topic_id}/messages/create.json",
 				{:message => hash[:message]}
 			end
 		end
@@ -38,14 +38,14 @@ module Convore
 		# group admin in order to delete the topic.
 		def delete_topic(topic_id)
 			if topic_id.integer?
-				RestClient.post "https://#{username}:#{password}@convore.com/api/topics/#{topic_id}/delete.json", {}
+				RestClient.post "https://#{@username}:#{@password}@convore.com/api/topics/#{topic_id}/delete.json", {}
 			end
 		end
 		
 		#Edit a topic. You must be the creator of the topic or a group admin in order to edit the topic.
 		def edit_topic(topic_id, hash)
 			if topic_id.integer?
-				RestClient.post "https://#{username}:#{password}@convore.com/api/topics/#{topic_id}/edit.json",
+				RestClient.post "https://#{@username}:#{@password}@convore.com/api/topics/#{topic_id}/edit.json",
 				{:name => hash[:name]}
 			end
 		end
@@ -53,7 +53,7 @@ module Convore
 		#Mark all messages in a topic as read
 		def mark_read(topic_id)
 			if topic_id.integer?
-				RestClient.post "https://#{username}:#{password}@convore.com/api/topics/#{topic_id}/mark_read.json", {}
+				RestClient.post "https://#{@username}:#{@password}@convore.com/api/topics/#{topic_id}/mark_read.json", {}
 			end
 		end
 		
