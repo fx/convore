@@ -6,10 +6,10 @@ Gem::Specification.new do |s|
   s.name        = "convore"
   s.version     = Convore::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Marian Rudzynski"]
-  s.email       = ["mr@impaled.org"]
+  s.authors     = ["Marian Rudzynski", "RyanonRails"]
+  s.email       = ["mr@impaled.org", "Ryan.Michael.Jones@gmail.com"]
   s.homepage    = ""
-  s.summary     = %q{A hasty convore.com API implementation in ruby}
+  s.summary     = %q{A convore.com API implementation in ruby}
   s.description = %q{}
 
   # s.rubyforge_project = "convore"

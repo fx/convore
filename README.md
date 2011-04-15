@@ -1,15 +1,9 @@
 Convore API
 ===========
 
-Status of Completion
+Convore!
 -----
-Account: 80%
-Groups: 50%
-Topics: 0%
-Messages: 0%
-Users: 0%
-
-Group Discovery 0%
+Convore's ruby gem!
 
 
 Usage
